@@ -5,10 +5,10 @@ export const usePanel = defineStore('usePanel', {
   state: () => ({
     panelSelection: [] as string[],
     viewModel: (localStorage.getItem('viewModel') || 'Grid') as string,
-    priceChangeColor: (localStorage.getItem('priceChangeColor') || '') as string,
-    buyPrice: (localStorage.getItem('buyPrice') || '') as string,
-    calender: (localStorage.getItem('calender') || '') as string,
-    language: (localStorage.getItem('language') || '') as string,
+    priceChangeColor: (localStorage.getItem('priceChangeColor') || 'Normal') as string,
+    buyPrice: (localStorage.getItem('buyPrice') || 'Hidden') as string,
+    calender: (localStorage.getItem('calender') || 'Georgian') as string,
+    language: (localStorage.getItem('language') || 'English') as string,
   }),
 
   getters: {

@@ -1,3 +1,6 @@
+// import { lang } from '@/stores/LanguageStore'
+// const langState = lang()
+
 export const formatNumber = (num?: number) => {
   if (num == null || isNaN(num)) return '-' // اگر مقدار نبود یا NaN بود
 
@@ -49,6 +52,54 @@ export const getPersianDate = () => {
   const parts = persianFormatter.formatToParts(now)
   return `${parts[0].value}/${parts[2].value}/${parts[4].value} ${parts[6].value}:${parts[8].value}`
 }
+
+// export const timeAgo = (pastTimestamp: number) => {
+//   const now = Date.now()
+//   const diff = (now - pastTimestamp) / 1000 // تفاوت به ثانیه
+//   const language = langState.getlang === 'en' ? true : false
+//   if (diff < 60) return language ? 'moments ago' : 'چند لحظه پیش'
+//   if (diff < 3600) {
+//     const mins = Math.floor(diff / 60)
+//     return mins === 1
+//       ? language
+//         ? 'a minute ago'
+//         : 'یک دقیقه پیش'
+//       : language
+//         ? `${mins} minutes ago`
+//         : `${mins} دقیقه پیش`
+//   }
+//   if (diff < 7200) return language ? 'about an hour ago' : 'ساعتی پیش'
+//   if (diff < 86400) {
+//     const hours = Math.floor(diff / 3600)
+//     return hours === 1
+//       ? language
+//         ? '1 hour ago'
+//         : 'یک ساعت قبل'
+//       : language
+//         ? `${hours} hours ago`
+//         : `${hours} ساعت قبل`
+//   }
+//   if (diff < 172800) return language ? 'yesterday' : 'دیروز'
+//   if (diff < 604800) {
+//     const days = Math.floor(diff / 86400)
+//     return days === 1
+//       ? language
+//         ? '1 day ago'
+//         : 'یک روز قبل'
+//       : language
+//         ? `${days} days ago`
+//         : `${days} روز قبل`
+//   }
+//   const weeks = Math.floor(diff / 604800)
+//   return weeks === 1
+//     ? language
+//       ? '1 week ago'
+//       : 'یک هفته قبل'
+//     : language
+//       ? `${weeks} weeks ago`
+//       : `${weeks} هفته قبل`
+// }
+
 // --- تابع انگلیسی با timestamp ---
 export const timeAgoEn = (pastTimestamp: number) => {
   const now = Date.now()
