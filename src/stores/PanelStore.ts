@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export const usePanel = defineStore('usePanel', {
   state: () => ({
     panelSelection: [] as string[],
-    viewModel: (localStorage.getItem('viewModel') || '') as string,
+    viewModel: (localStorage.getItem('viewModel') || 'Grid') as string,
     priceChangeColor: (localStorage.getItem('priceChangeColor') || '') as string,
     buyPrice: (localStorage.getItem('buyPrice') || '') as string,
     calender: (localStorage.getItem('calender') || '') as string,
