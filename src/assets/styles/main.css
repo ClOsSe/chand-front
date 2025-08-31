@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@import './Global.scss';
+
+/* main.css */
+
+@font-face {
+  font-family: 'Vazir-Bold';
+  src:
+    url('../assets/fonts/persian/Vazir-Bold.woff') format('woff2'),
+    url('../assets/fonts/persian/Vazir-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal; /* تغییر به normal */
+}
+
+@font-face {
+  font-family: 'Vazir-Light';
+  src:
+    url('../assets/fonts/persian/Vazir-Light.woff') format('woff2'),
+    url('../assets/fonts/persian/Vazir-Light.woff') format('woff');
+  font-weight: 300; /* تغییر به عدد */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir-Medium';
+  src:
+    url('../assets/fonts/persian/Vazir-Medium.woff') format('woff2'),
+    url('../assets/fonts/persian/Vazir-Medium.woff') format('woff');
+  font-weight: 500; /* تغییر به عدد */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir-Thin';
+  src:
+    url('../assets/fonts/persian/Vazir-Thin.woff') format('woff2'),
+    url('../assets/fonts/persian/Vazir-Thin.woff') format('woff');
+  font-weight: 100; /* تغییر به عدد */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src:
+    url('../assets/fonts/persian/Vazir.woff') format('woff2'),
+    url('../assets/fonts/persian/Vazir.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
