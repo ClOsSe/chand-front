@@ -3,10 +3,7 @@
     <div class="bg-white dark:bg-white-100 rounded-3xl px-3 py-6 ring shadow-xl ring-gray-900/5 w-75 " :class="[viewModel === 'Grid' ? 'w-75' : 'w-100']">
       <div class="flex justify-between" >
         <span class="">
-          <img v-if="flagCdnMap[flag]" :src="`https://flagcdn.com/24x18/${flagCdnMap[flag]}.png`"  :alt="flag.toUpperCase()" class="w-6 h-6 rounded-full bg-cover bg-center" />
-          <p v-if="!flagCdnMap[flag]" class="text-gray-500 dark:text-gray-400 mt-0 r-0 text-xl">
-            {{ sambol }}
-          </p>
+          <img  :src="`src/assets/icons/${flag}.jpg`"  :alt="flag.toUpperCase()" class="w-6 h-6 rounded-full bg-cover bg-center" />
         </span>
         <div class="">
           <p class="text-gray-500 dark:text-gray-400 mt-0 r-0 text-xs text-right">
@@ -17,7 +14,7 @@
               {{ fatitle }}
             </span>
           </p>
-          <p v-if="flagCdnMap[flag]" class="uppercase text-gray-500 dark:text-gray-400 mt-0 r-0 text-xs text-right" >
+          <p class="uppercase text-gray-500 dark:text-gray-400 mt-0 r-0 text-xs text-right" >
             {{ flag}}
           </p>
         </div>
@@ -36,7 +33,6 @@
 <script setup lang="ts">
 
 
-import { flagCdnMap } from '@/scripts/const/const';
 import { formatNumber } from '@/scripts/functions/GeneralFunction';
 import { summary } from '@/scripts/functions/PriceChange';
 import { lang } from '@/stores/LanguageStore';

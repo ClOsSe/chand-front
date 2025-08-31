@@ -19,7 +19,7 @@
             </div>
             <div>
               <span class="">
-                <img v-if="flagCdnMap[item.ab]" :src="`https://flagcdn.com/24x18/${flagCdnMap[item.ab]}.png`"  :alt="item.ab.toUpperCase()" class="w-6 h-6 rounded-full bg-cover bg-center" />
+                <img :src="`src/assets/icons/${item.ab}.jpg`"   :alt="item.ab.toUpperCase()" class="w-6 h-6 rounded-full bg-cover bg-center" />
               </span>
             </div>
           </div>
@@ -29,7 +29,6 @@
     </div>
 </template>
 <script setup lang="ts">
-import { flagCdnMap } from '@/scripts/const/const';
 import { countryList } from '@/stores/FAVCountrylistStore';
 import { lang } from '@/stores/LanguageStore';
 import { usePrice } from '@/stores/PriceStore';
