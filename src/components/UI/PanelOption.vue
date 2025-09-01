@@ -3,12 +3,13 @@
       v-if="showPanel" 
        class="absolute bottom-full right-1 mb-2 w-60 bg-white shadow-lg rounded-xl border border-gray-200 z-50"
     >
-      <ul class="divide-y divide-gray-200">
+      <ul class="divide-y divide-gray-200 " :class="[panelState.getLanguage === 'English' ? 'ltr' :'rtl']">
         <li @click="toggleView('activeMenue')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
           <div class="flex">
             <svg v-if="activeMenue != 'activeMenue'" xmlns="http://www.w3.org/2000/svg" fill="none" 
               viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0" 
-              :class="[activeMenue === 'activeMenue' ?'text-black':'']"> 
+              :class="[activeMenue === 'activeMenue' ?'text-black':'']"
+              :style="[panelState.getLanguage != 'English' ?'transform: rotate(180deg)':'']"> 
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
             <svg v-if="activeMenue === 'activeMenue'" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -17,7 +18,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
             <p :class="[activeMenue === 'activeMenue' ?'text-black':'']">
-              View Mode
+              {{ t('panel.view-model') }}
             </p>
           </div>
           <svg :class="[activeMenue === 'activeMenue' ?'text-black':'']" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 m-1 mr-0">
@@ -33,14 +34,14 @@
                 <svg v-if="panelState.getViewModel === 'Grid'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-1" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-                Grid
+                {{ t('panel.view-model-option.grid') }}
               </li>
               
               <li @click="addSettingToState('List')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex" :class="[panelState.getViewModel === 'List'? 'text-black':'']">
                 <svg v-if="panelState.getViewModel === 'List'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-1" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-                List
+                {{ t('panel.view-model-option.list') }}
               </li>
             </ul>
           </div>
@@ -49,7 +50,8 @@
         <li @click="togglePriceChange('PriceChangeColor')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
           <div class="flex">    
             <svg v-if="activeMenue != 'PriceChangeColor'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " 
-            :class="[activeMenue === 'PriceChangeColor' ?'text-black':'']"> 
+            :class="[activeMenue === 'PriceChangeColor' ?'text-black':'']"
+            :style="[panelState.getLanguage != 'English' ?'transform: rotate(180deg)':'']"> 
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
             <svg v-if="activeMenue === 'PriceChangeColor'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 "
@@ -57,7 +59,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
             <p :class="[activeMenue === 'PriceChangeColor' ?'text-black':'']">
-              Price Change Color
+              {{ t('panel.price-change-color') }}
             </p>
           </div>
           <svg :class="[activeMenue === 'PriceChangeColor' ?'text-black':'']" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 mr-0 " > 
@@ -72,13 +74,13 @@
                 <svg v-if="panelState.getPriceChangeColor === 'Normal'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-1" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-                Normal
+                {{ t('panel.price-change-color-option.normal') }}
               </li>
               <li @click="addSettingToState('Reversed')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex" :class="[panelState.getPriceChangeColor === 'Reversed'? 'text-black':'']">
                 <svg v-if="panelState.getPriceChangeColor === 'Reversed'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-1" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-                Reversed
+                {{ t('panel.price-change-color-option.reversed') }}
               </li>
             </ul>
           </div>
@@ -87,7 +89,8 @@
         <li @click="toggleBuyPrice('BuyPrice')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
           <div class="flex">
             <svg v-if="activeMenue != 'BuyPrice'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " 
-            :class="[activeMenue === 'BuyPrice' ?'text-black':'']"> 
+            :class="[activeMenue === 'BuyPrice' ?'text-black':'']"
+            :style="[panelState.getLanguage != 'English' ?'transform: rotate(180deg)':'']"> 
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
             <svg v-if="activeMenue === 'BuyPrice'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 "
@@ -95,7 +98,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
             <p :class="[activeMenue === 'BuyPrice' ?'text-black':'']">
-              Buy Price
+              {{ t('panel.buy-price') }}
             </p>
           </div>
           <svg :class="[activeMenue === 'BuyPrice' ?'text-black':'']" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 mr-0">
@@ -110,13 +113,13 @@
                 <svg v-if="panelState.getBuyPrice === 'Hidden'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-1" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-                Hidden
+                {{ t('panel.buy-price-option.hidden') }}
               </li>
               <li @click="addSettingToState('Show if Available')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex" :class="[panelState.getBuyPrice === 'Show if Available' ? 'text-black':'']">
                 <svg v-if="panelState.getBuyPrice === 'Show if Available'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-1" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-                Show if Available
+                {{ t('panel.buy-price-option.show-if-available') }}
               </li>
             </ul>
           </div>
@@ -124,14 +127,16 @@
 
         <li @click="toggleCalender('Calender')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
           <div class="flex">
-            <svg :class="[activeMenue === 'Calender' ?'text-black':'']" v-if="activeMenue != 'Calender'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " > 
+            <svg  :class="[activeMenue === 'Calender' ?'text-black':'']" 
+            :style="[panelState.getLanguage != 'English' ?'transform: rotate(180deg)':'']" 
+            v-if="activeMenue != 'Calender'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " > 
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
             <svg :class="[activeMenue === 'Calender' ?'text-black':'']" v-if="activeMenue === 'Calender'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " >
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
             <p :class="[activeMenue === 'Calender' ?'text-black':'']">
-              Calender
+              {{ t('panel.calender') }}
             </p>
           </div>
           <svg :class="[activeMenue === 'Calender' ?'text-black':'']" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 m-1 mr-0 ">
@@ -146,13 +151,13 @@
                 <svg v-if="panelState.getCalender === 'Georgian'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-1" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-                Georgian
+                {{ t('panel.calender-option.georgian') }}
               </li>
               <li @click="addSettingToState('Persian')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex" :class="[panelState.getCalender === 'Persian'? 'text-black':'']">
                 <svg v-if="panelState.getCalender === 'Persian'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-1" >
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-                Persian
+                {{ t('panel.calender-option.persian') }}
               </li>
             </ul>
           </div>
@@ -160,14 +165,15 @@
 
         <li @click="toggleLanguage('Language')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
           <div class="flex">
-            <svg :class="[activeMenue === 'Language' ?'text-black':'']" v-if="activeMenue != 'Language'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " > 
+            <svg :class="[activeMenue === 'Language' ?'text-black':'']"
+            :style="[panelState.getLanguage != 'English' ?'transform: rotate(180deg)':'']" v-if="activeMenue != 'Language'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " > 
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
             <svg :class="[activeMenue === 'Language' ?'text-black':'']"  v-if="activeMenue === 'Language'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " >
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
               <p :class="[activeMenue === 'Language' ?'text-black':'']">
-              Language
+              {{ t('panel.language') }}
             </p>
           </div>
           <svg :class="[activeMenue === 'Language' ?'text-black':'']"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 m-1 mr-0 ">
@@ -184,7 +190,7 @@
                 </svg>
                 <svg class="w-6 h-6" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><circle cx="256" cy="256" fill="#f0f0f0" r="256"/><g fill="#d80027"><path d="m244.87 256h267.13c0-23.106-3.08-45.49-8.819-66.783h-258.311z"/><path d="m244.87 122.435h229.556c-15.671-25.572-35.708-48.175-59.07-66.783h-170.486z"/><path d="m256 512c60.249 0 115.626-20.824 159.356-55.652h-318.712c43.73 34.828 99.107 55.652 159.356 55.652z"/><path d="m37.574 389.565h436.852c12.581-20.529 22.338-42.969 28.755-66.783h-494.362c6.417 23.814 16.174 46.254 28.755 66.783z"/></g><path d="m118.584 39.978h23.329l-21.7 15.765 8.289 25.509-21.699-15.765-21.699 15.765 7.16-22.037c-19.106 15.915-35.852 34.561-49.652 55.337h7.475l-13.813 10.035c-2.152 3.59-4.216 7.237-6.194 10.938l6.596 20.301-12.306-8.941c-3.059 6.481-5.857 13.108-8.372 19.873l7.267 22.368h26.822l-21.7 15.765 8.289 25.509-21.699-15.765-12.998 9.444c-1.301 10.458-1.979 21.11-1.979 31.921h256c0-141.384 0-158.052 0-256-50.572 0-97.715 14.67-137.416 39.978zm9.918 190.422-21.699-15.765-21.699 15.765 8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822l-21.7 15.765zm-8.289-100.083 8.289 25.509-21.699-15.765-21.699 15.765 8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822zm100.115 100.083-21.699-15.765-21.699 15.765 8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822l-21.7 15.765zm-8.289-100.083 8.289 25.509-21.699-15.765-21.699 15.765 8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822zm0-74.574 8.289 25.509-21.699-15.765-21.699 15.765 8.289-25.509-21.7-15.765h26.822l8.288-25.509 8.288 25.509h26.822z" fill="#0052b4"/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
                 <p class="m-1" :class="[false ? 'text-black':'']">
-                  English
+                  {{ t('panel.language-option.english') }}
                 </p>
               </li>
               <li @click="addSettingToState('فارسی')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex" :class="[panelState.getLanguage === 'فارسی'? 'text-black':'']">
@@ -192,7 +198,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
                 <p class="m-1" :class="[false ? 'text-black':'']">
-                  فارسی
+                  {{ t('panel.language-option.persian') }}
                 </p>
                 <svg class="w-6 h-6" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><circle cx="256" cy="256" fill="#f0f0f0" r="256"/><path d="m339.147 189.217h-33.494c.277 3.681.434 7.395.434 11.13 0 24.764-6.19 48.767-16.981 65.853-3.329 5.27-8.923 12.712-16.411 17.732v-94.716h-33.391v94.716c-7.487-5.02-13.082-12.461-16.411-17.732-10.792-17.086-16.981-41.089-16.981-65.853 0-3.735.158-7.45.434-11.13h-33.494c-.215 3.663-.332 7.373-.332 11.13 0 68.656 36.668 122.435 83.478 122.435s83.478-53.779 83.478-122.435c.002-3.757-.115-7.467-.329-11.13z" fill="#d80027"/><path d="m105.739 122.435h33.391v22.261h33.391v-22.261h33.391v22.261h33.391v-22.261h33.391v22.261h33.391v-22.261h33.391v22.261h33.391v-22.261h33.391v22.261h80.337c-41.405-85.631-129.102-144.696-230.595-144.696s-189.19 59.065-230.598 144.696h80.337z" fill="#6da544"/><path d="m406.261 367.304v22.261h-33.391v-22.261h-33.391v22.261h-33.391v-22.261h-33.391v22.261h-33.391v-22.261h-33.391v22.261h-33.391v-22.261h-33.394v22.261h-33.391v-22.261h-80.337c41.408 85.631 129.104 144.696 230.598 144.696s189.19-59.065 230.598-144.696z" fill="#d80027"/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
               </li>
@@ -200,23 +206,36 @@
           </div>
         </li>
 
-        <SubMenu title="Widgets Guide" />
+        <SubMenu icon="widgets" :title="t('panel.widgets-guide')" />
 
-        <SubMenu title="Website" />
-
-        <SubMenu :title="'Version: '+version " />
+        <SubMenu icon="website" :title="t('panel.website')" />
+        <SubMenu icon="" :title="t('panel.version') + ' ' + version" />
 
       </ul>
     </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { APP_VERSION } from '../../config/AppVersion';
 import { usePanel } from '@/stores/PanelStore';
 import SubMenu from './footer/SubMenu.vue';
 import { lang } from '@/stores/LanguageStore';
 const panelState = usePanel();
 const useLang = lang();
+
+import { useI18n } from 'vue-i18n'
+const { t, locale } = useI18n();
+
+const switchLanguage =(lang: string) =>{
+  locale.value = lang
+}
+onMounted(()=>{
+  if(panelState.getLanguage === 'English'){
+    switchLanguage('en') 
+  }else{
+    switchLanguage('fa');
+  }
+})
 
 const version = APP_VERSION
 
@@ -311,14 +330,16 @@ const addSettingToState=(setting:string) =>{
       panelState.removeSetting('Georgian')
       break;
     case 'English':
+      switchLanguage('en');
       panelState.setLanguage('English');
       panelState.removeSetting('فارسی');
-      useLang.setlang('en')
+      useLang.setlang('en');
       break;
     case 'فارسی':
+      switchLanguage('fa');
       panelState.setLanguage('فارسی');
       panelState.removeSetting('English');
-      useLang.setlang('fa')
+      useLang.setlang('fa');
       break;
     default:
       break;
