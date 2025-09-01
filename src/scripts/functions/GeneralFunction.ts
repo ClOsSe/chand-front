@@ -1,16 +1,18 @@
-// import { lang } from '@/stores/LanguageStore'
-// const langState = lang()
-
 export const formatNumber = (num?: number) => {
-  if (num == null || isNaN(num)) return '-' // اگر مقدار نبود یا NaN بود
+  if (num == null || isNaN(num)) return '-'
 
   if (num < 1_000_000) {
-    return num.toLocaleString('en-US') // 123456 => "123,456"
+    return num.toLocaleString('en-US')
   } else {
-    return (num / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M'
-    // 14800000 => "14.8M"
-    // 2000000 => "2M" (بدون .0 اضافی)
+    const millions = num / 1_000_000
+    return millions % 1 === 0 ? `${millions}M` : `${millions.toFixed(1)}M`
   }
+}
+
+export const unFormatNumber = (number: string | number | undefined) => {
+  if (number === undefined) return undefined
+  const num = Number(number.toString().replace(/,/g, '')) // جایگزین replaceAll
+  return isNaN(num) ? undefined : num
 }
 
 export const formatNumberChange = (num: number) => {
