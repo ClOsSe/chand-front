@@ -3,7 +3,7 @@
       v-if="showPanel" 
        class="absolute bottom-full right-1 mb-2 w-60 bg-white shadow-lg rounded-xl border border-gray-200 z-50"
     >
-      <ul class="divide-y divide-gray-200 " :class="[panelState.getLanguage === 'English' ? 'ltr' :'rtl']">
+      <ul class="divide-y divide-gray-200 " :class="[panelState.getLanguage != 'English' ? 'rtl' :'']">
         <li @click="toggleView('activeMenue')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
           <div class="flex">
             <svg v-if="activeMenue != 'activeMenue'" xmlns="http://www.w3.org/2000/svg" fill="none" 

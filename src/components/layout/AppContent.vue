@@ -1,5 +1,5 @@
 <template>
-  <main class="grid" :class="[viewModel === 'Grid' ? 'grid-cols-2' : 'grid-cols-1']">
+  <main class="grid mb-20" :class="[viewModel === 'Grid' ? 'grid-cols-2' : 'grid-cols-1']">
     <div v-for="(item, index) in priceList" :key="index" >
       <PriceCard
         class="m-1"
