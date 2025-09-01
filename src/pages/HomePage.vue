@@ -1,43 +1,37 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-linear-to-t from-orange-100 to-gray-100 ">
-    <AppHeader title="Chand?!" />
-    <div>
-      <div class="flex justify-center items-center" v-show="loading">
-        <VueSpinnerTail size="90" class="mt-10" :loading="false" color="gray" /><br/>
-      </div>
-      <div v-if="checkyourNetwork && !loading" >
-        <div class="flex justify-center">
-          <h1>Network Connectivity Issues</h1>
-        </div>
-        <br>
-         <div class="flex flex-row justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 bounce-svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
-            />
-          </svg>
-        </div>
-        <div class="flex flex-row justify-center mt-2">
-          <h6>Fix the issue and pull down to refresh</h6>
-        </div>
-      </div>
-      <div v-if="!loading && !checkyourNetwork">
-        <AppContent class="flex-grow" />
-        <footer class="footer footerbox-pos full-width flex justify-center items-center">
-          <AppFooter class="width90" />
-        </footer>
-      </div>
+  <div class="flex flex-col min-h-screen bg-gradient-to-t from-orange-100 to-gray-100">
+  <AppHeader title="Chand?!" />
+
+  <main class="flex flex-col items-center justify-center flex-grow w-full">
+    <div v-show="loading" class="flex justify-center items-center">
+      <VueSpinnerTail size="90" class="mt-10" :loading="false" color="gray" />
     </div>
-  </div>
+
+    <div v-if="checkyourNetwork && !loading" class="flex flex-col items-center">
+      <h1>Network Connectivity Issues</h1>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 bounce-svg mt-2"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
+      </svg>
+      <h6 class="mt-2">Fix the issue and pull down to refresh</h6>
+    </div>
+
+    <div v-if="!loading && !checkyourNetwork" class="flex flex-col items-center w-full">
+      <AppContent class="flex-grow" />
+    </div>
+  </main>
+
+  <footer class="mt-auto flex justify-center items-center w-full fixed bottom-2.5">
+    <AppFooter class="w-11/12 md:w-3/4" />
+  </footer>
+</div>
+
 </template>
 
 <script setup lang="ts">
