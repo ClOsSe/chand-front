@@ -12,8 +12,8 @@ export const faLang = {
     },
     'buy-price': 'قیمت خرید',
     'buy-price-option': {
-      Hidden: 'مخفی',
-      'Show if available': 'نمایش در صورت موجود بودن',
+      hidden: 'مخفی',
+      'show-if-available': 'نمایش در صورت موجود بودن',
     },
     calender: 'تقویم',
     'calender-option': {
