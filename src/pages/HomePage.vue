@@ -1,8 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen bg-gradient-to-t from-orange-100 to-gray-100">
   <AppHeader title="Chand?!" />
-
-  <main class="flex flex-col items-center justify-center flex-grow w-full">
+  <main ref="content" class="flex flex-col items-center justify-center flex-grow w-full">
     <div v-show="loading" class="flex justify-center items-center">
       <VueSpinnerTail size="90" class="mt-10" :loading="false" color="gray" />
     </div>
@@ -30,6 +29,9 @@
   <footer class="mt-auto flex justify-center items-center w-full fixed bottom-2.5">
     <AppFooter class="w-11/12 md:w-3/4" />
   </footer>
+  <div v-if="state.getShowChart" ref="chart"  class=" w-full fixed bottom-0 ">
+    <PriceChart  />
+  </div>
 </div>
 
 </template>
@@ -40,12 +42,14 @@ import AppFooter from '@/components/layout/AppFooter.vue'
 import AppContent from '@/components/layout/AppContent.vue'
 import { getLatestPrice } from '@/scripts/common/GetPrices';
 import { usePrice } from '@/stores/PriceStore';
-import { onMounted ,ref} from 'vue'
+import { onMounted ,onUnmounted,ref} from 'vue'
 import { lastUpdate } from '@/stores/UpdateTime';
 import { lang } from '@/stores/LanguageStore';
 import { setLocalstorageLang } from '@/scripts/functions/GeneralFunction';
 import { toast } from 'vue3-toastify';
 import { VueSpinnerTail } from 'vue3-spinners'
+import PriceChart from '@/components/UI/PriceChart.vue';
+
 const timeState = lastUpdate();
 const useLang = lang();
 
@@ -53,6 +57,28 @@ const state = usePrice()
 
 const loading = ref(true)
 const checkyourNetwork = ref(false)
+
+const content = ref<HTMLElement | null>(null);
+const chart = ref<HTMLElement | null>(null);
+
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as Node
+  if (state.getShowChart) {
+    if (chart.value?.contains(target)) return
+    if (content.value?.contains(target)) {
+      state.toggleChart(false)
+    }
+  }
+}
+
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
 
 const getPrice = async () => {
   try{

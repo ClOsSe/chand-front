@@ -9,6 +9,7 @@
         :sambol="item.av" 
         :entitle="item.en" 
         :priceList="item.ps"
+        :ty="item.ty"
         :fatitle="item.fa"  />
       </div>
     </main>

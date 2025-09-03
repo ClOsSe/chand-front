@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center items-center m-1">
-    <div class="bg-white dark:bg-white-100 rounded-3xl px-3 py-6 ring shadow-xl ring-gray-900/5 w-75 " :class="[viewModel === 'Grid' ? 'w-75' : 'w-100']">
+    <div @click="showChart" @click.stop="priceStore.toggleChart(true)" class="bg-white dark:bg-white-100 rounded-3xl px-3 py-6 ring shadow-xl ring-gray-900/5 w-75 " :class="[viewModel === 'Grid' ? 'w-75' : 'w-100']">
       <div class="flex justify-between" >
         <span class="">
           <img  :src="`/icons/${flag}.jpg`"  :alt="flag.toUpperCase()" class="w-6 h-6 rounded-full bg-cover bg-center" />
@@ -37,8 +37,10 @@ import { formatNumber } from '@/scripts/functions/GeneralFunction';
 import { summary } from '@/scripts/functions/PriceChange';
 import { lang } from '@/stores/LanguageStore';
 import { usePanel } from '@/stores/PanelStore';
+import { usePrice } from '@/stores/PriceStore';
 import { computed } from 'vue';
 const panelState = usePanel();
+const priceStore = usePrice();
 
 
 const useLang = lang();
@@ -51,13 +53,25 @@ type Price = {
   sp: number
   ts: string
 }
+const showChart =()=>{
+  priceStore.setChartPriceList({
+    ab:props.flag,
+    av:props.sambol,
+    en:props.entitle,
+    fa:props.fatitle,
+    ty:props.ty,
+    ps:props.priceList,
+  })
+  priceStore.toggleChart(true);
+}
 
-defineProps<{
+const props = defineProps<{
   country: string
   flag: string  // می‌تونه ایموجی باشه
   entitle:string
   fatitle:string
   sambol:string
+  ty:string
   priceList:Price[]
 }>()
 </script>

@@ -29,7 +29,7 @@ export class Currency {
   av!: string
   en!: string
   fa!: string
-  ty!: 'cu'
+  ty!: string
   ps!: PriceSnapshot[]
 
   constructor(data: currency) {

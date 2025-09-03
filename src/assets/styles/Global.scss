@@ -24,9 +24,6 @@
 .shadow-green {
   box-shadow: 0 4px 30px rgba(34, 197, 94, 0.3); /* رنگ سبز با شفافیت */
 }
-.shadow-green {
-  box-shadow: 0 4px 30px rgba(34, 197, 94, 0.3); /* رنگ سبز با شفافیت */
-}
 .border-lightgray {
   border: lightgray solid 1px; /* Custom border style */
 }
@@ -59,6 +56,9 @@
 }
 .f-s-26 {
   font-size: 26px !important;
+}
+.f-s-48 {
+  font-size: 48px !important;
 }
 .q-field__native {
   text-align: center;

@@ -14,6 +14,9 @@ export const unFormatNumber = (number: string | number | undefined) => {
   const num = Number(number.toString().replace(/,/g, '')) // جایگزین replaceAll
   return isNaN(num) ? undefined : num
 }
+export const separateThousands = (num: number) => {
+  return num.toLocaleString()
+}
 
 export const formatNumberChange = (num: number) => {
   if (num < 1_000) {
