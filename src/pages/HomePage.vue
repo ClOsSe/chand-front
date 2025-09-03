@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen bg-gradient-to-t from-orange-100 to-gray-100">
-  <AppHeader title="Chand?!" />
+  <AppHeader title="Now Chand?!" />
   <main ref="content" class="flex flex-col items-center  flex-grow w-full">
     <div v-show="loading" class="flex justify-center items-center">
       <VueSpinnerTail size="90" class="mt-10" :loading="false" color="gray" />
