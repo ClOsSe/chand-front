@@ -206,7 +206,58 @@
           </div>
         </li>
 
-        <SubMenu icon="widgets" :title="t('panel.widgets-guide')" />
+         <li @click="toggleSocial('Social')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
+          <div class="flex">
+            <svg :class="[activeMenue === 'Social' ?'text-black':'']"
+            :style="[panelState.getLanguage != 'English' ?'transform: rotate(180deg)':'']" v-if="activeMenue != 'Social'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " > 
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+            <svg :class="[activeMenue === 'Social' ?'text-black':'']"  v-if="activeMenue === 'Social'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 m-1 ml-0 " >
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+              <p :class="[activeMenue === 'Social' ?'text-black':'']">
+              {{ t('panel.social') }}
+            </p>
+          </div>
+            <img  :src="`/icons/send message.png`"  alt="social network" class=" rounded-full bg-cover bg-center w-6 h-6 mr-0 m-0 transform scale-x-[-1]"
+            style="margin-right: -5px;transform: rotate(10deg);" />
+        </li>
+        <!-- ساب‌منو -->
+         <li v-if="Social" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between relative">
+          <div class="absolute top-0 right-0 w-50 bg-white shadow-lg rounded-lg border border-gray-200 z-50">
+            <ul class="divide-y divide-gray-200">
+              <li @click="onSocialClick('Instagram')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
+                <div class="flex">
+                  <img  :src="`/icons/instagram.png`"  alt="social network instagram" class="w-6 h-6 mr-1 "/>
+                  {{ t('panel.social-option.instagram') }}
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 m-1 mr-0 ">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </li>
+              <li @click="onSocialClick('Telegram')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
+                <div class="flex">
+                  <img  :src="`/icons/telegram.png`"  alt="social network telegram" class="w-6 h-6 mr-1 "/>
+                  {{ t('panel.social-option.telegram') }}
+                </div>
+                <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 m-1 mr-0 ">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </li>
+              <li @click="onSocialClick('Youtube')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between">
+                <div class="flex">
+                  <img  :src="`/icons/youtube.png`"  alt="social network youtube" class="w-6 h-6 mr-1 "/>
+                  {{ t('panel.social-option.youtube') }}
+                </div>
+                <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 m-1 mr-0 ">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- <SubMenu icon="widgets" :title="t('panel.widgets-guide')" /> -->
 
         <SubMenu icon="website" :title="t('panel.website')" />
         <SubMenu icon="" :title="t('panel.version') + ' ' + version" />
@@ -249,7 +300,7 @@ const toggleView =(menue:string)=>{
   BuyPrice.value = false;
   Language.value = false;
   Calender.value = false;
-
+  Social.value = false;
 }
 
 const PriceChangeColor = ref(false)
@@ -260,7 +311,7 @@ const togglePriceChange =(menue:string)=>{
   BuyPrice.value = false;
   Language.value = false;
   Calender.value = false;
-
+  Social.value = false;
 }
 
 const BuyPrice = ref(false)
@@ -271,7 +322,7 @@ const toggleBuyPrice =(menue:string)=>{
   PriceChangeColor.value = false;
   Language.value = false;
   Calender.value = false;
-
+  Social.value = false;
 }
 
 const Calender = ref(false)
@@ -282,6 +333,7 @@ const toggleCalender =(menue:string)=>{
   PriceChangeColor.value = false;
   BuyPrice.value = false;
   Language.value = false;
+  Social.value = false;
 }
 
 const Language = ref(false)
@@ -291,6 +343,18 @@ const toggleLanguage =(menue:string)=>{
 
   PriceChangeColor.value = false;
   ViewMode.value = false;
+  BuyPrice.value = false;
+  Calender.value = false;
+  Social.value = false;
+}
+const Social = ref(false)
+const toggleSocial =(menue:string)=>{
+  Social.value = !Social.value;
+  activeMenue.value = Social.value ? menue : '';
+
+  PriceChangeColor.value = false;
+  ViewMode.value = false;
+  Language.value = false;
   BuyPrice.value = false;
   Calender.value = false;
 }
@@ -346,6 +410,27 @@ const addSettingToState=(setting:string) =>{
   }
   panelState.addSetting(setting)
 }
+
+
+
+
+const  onSocialClick=(social:string)=>{
+switch (social) {
+  case 'Instagram':
+    window.open('https://www.instagram.com/webinaexpert/','_blank')
+    break;
+  case 'Telegram':
+    window.open('https://t.me/webinaexpert','_blank')
+    break;
+  case 'Youtube':
+    window.open('https://www.youtube.com/@webinaexpert','_blank')
+    break;
+
+  default:
+    break;
+}
+}
+
 
 const props = defineProps<{
   showPanel:boolean

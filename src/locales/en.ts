@@ -25,6 +25,12 @@ export const enLang = {
       english: 'English',
       persian: 'فارسی',
     },
+    social: 'Social Media',
+    'social-option': {
+      telegram: 'Telegram',
+      instagram: 'Instagram',
+      youtube: 'Youtube',
+    },
     'widgets-guide': 'Widgets Guide',
     website: 'Website',
     version: 'Version :',

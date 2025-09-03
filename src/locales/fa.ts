@@ -25,6 +25,12 @@ export const faLang = {
       english: 'انگلیسی',
       persian: 'فارسی',
     },
+    social: 'شبکه‌های اجتماعی',
+    'social-option': {
+      telegram: 'تلگرام',
+      instagram: 'اینستاگرام',
+      youtube: 'یوتیوب',
+    },
     'widgets-guide': 'راهنمای ابزارک‌ها',
     website: 'وب سایت',
     version: 'نسخه :',
