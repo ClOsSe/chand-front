@@ -19,7 +19,7 @@
             </div>
             <div>
               <span class="">
-                <img :src="`src/assets/icons/${item.ab}.jpg`"   :alt="item.ab.toUpperCase()" class="w-6 h-6 rounded-full bg-cover bg-center" />
+                <img :src="`/icons/${item.ab}.jpg`"   :alt="item.ab.toUpperCase()" class="w-6 h-6 rounded-full bg-cover bg-center" />
               </span>
             </div>
           </div>
