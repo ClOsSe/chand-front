@@ -14,7 +14,7 @@
       </div>
       
       <!-- last update status -->
-      <h3 class="text-gray-500 dark:text-gray-400 mt-0 r-0 text-xs text-right"
+      <h3 class="text-gray-500 dark:text-gray-400 mt-2 r-0 text-xs text-right"
       :class="[useLang.getlang === 'en' ? 'ltr':'rtl']">
         {{lastUpdateTime}}
       </h3>
