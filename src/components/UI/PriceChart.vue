@@ -92,7 +92,7 @@ const chartOptions = ref<ChartOptions<'line'>>({
   },
   elements: {
     point: {
-      radius: 0 // نقاط نمایش داده نشن
+      radius: 0 
     }
   },
   scales: {
@@ -101,7 +101,7 @@ const chartOptions = ref<ChartOptions<'line'>>({
     },
     y: {
       grid: { display: false },
-      ticks: { display: false } // حذف اعداد سمت y
+      ticks: { display: false } 
     }
   }
 })
