@@ -261,6 +261,7 @@
 
         <SubMenu icon="website" :title="t('panel.website')" />
         <SubMenu icon="" :title="t('panel.version') + ' ' + version" />
+        <SubMenu icon="Webinaexpert" :title="t('panel.webinaexpert')" class="text-center text-gray-400 flex justify-center text-[15px]" />
 
       </ul>
     </div>

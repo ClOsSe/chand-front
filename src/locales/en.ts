@@ -1,5 +1,6 @@
 export const enLang = {
   panel: {
+    webinaexpert: 'webinaexpert',
     'view-model': 'View Model',
     'view-model-option': {
       grid: 'Grid',

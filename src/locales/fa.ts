@@ -1,5 +1,6 @@
 export const faLang = {
   panel: {
+    webinaexpert: 'webinaexpert',
     'view-model': 'نمایش مدل',
     'view-model-option': {
       grid: 'جدول',
