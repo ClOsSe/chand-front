@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center items-center m-1">
-    <div @click="showChart" @click.stop="priceStore.toggleChart(true)" class="bg-white dark:bg-white-100 rounded-3xl px-3 py-6 ring shadow-xl ring-gray-900/5 w-75 " :class="[viewModel === 'Grid' ? 'w-75' : 'w-100']">
+    <div @click="showChart" @click.stop="priceStore.toggleChart(true)" class="bg-white min-h-44 dark:bg-white-100 rounded-3xl px-3 py-6 ring shadow-xl ring-gray-900/5 w-75 " :class="[viewModel === 'Grid' ? 'w-75' : 'w-100']">
       <div class="flex justify-between" >
         <span class="">
           <img  :src="`/icons/${flag}.jpg`"  :alt="flag.toUpperCase()" class="w-6 h-6 rounded-full bg-cover bg-center" />

@@ -9,7 +9,7 @@
         </button>
         <!-- list btn -->
         <div ref="countryListRef">
-          <CountryList  :showCountryList="showCountryList" />
+          <CountryList  :showCountryList="showCountryList && !priceState.getShowChart" />
         </div>
       </div>
       
@@ -27,7 +27,7 @@
         </button>
         <!-- panel -->
         <div  ref="panelRef">
-          <PanelOption :showPanel="showPanel" />
+          <PanelOption :showPanel="showPanel && !priceState.getShowChart" />
         </div>
       </div>
     </div>
@@ -43,8 +43,11 @@ import { lastUpdate } from '@/stores/UpdateTime';
 import { onMounted ,ref ,onUnmounted, watch} from 'vue';
 import  PanelOption  from '../UI/PanelOption.vue'
 import  CountryList  from '../UI/CountryList.vue'
+import { usePrice } from '@/stores/PriceStore';
 
 const useLang = lang();
+const priceState = usePrice()
+
 
 
 const lastUpdateTime = ref('')
