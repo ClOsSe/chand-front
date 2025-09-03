@@ -444,6 +444,7 @@ watch(()=>props.showPanel,(newVal)=>{
     BuyPrice.value = false;
     Calender.value = false;
     Language.value = false;
+    Social.value = false;
 
   }
 })
