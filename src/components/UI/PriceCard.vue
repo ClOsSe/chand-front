@@ -19,7 +19,11 @@
           </p>
         </div>
       </div>
-      <h3 class="dark:text-red mt-9 text-base font-medium tracking-tight" :class="[panelState.getPriceChangeColor === 'Normal' ? 'text-red-500' : 'text-green-600']">{{ summary(priceList)?.change }}</h3>
+      <h3 class="dark:text-red mt-9 text-base font-medium tracking-tight" :class="[panelState.getPriceChangeColor === 'Normal' ? 'text-red-500' : 'text-green-600']">
+        <!-- {{ summary(priceList)?.change }} -->
+        {{ summary(priceList)?.changeWithSeparate }}
+
+      </h3>
       <p class="text-black dark:text-black mt-0 text-3xl font-medium">
       {{ formatNumber(priceList[0].sp) }} 
       </p>
