@@ -86,6 +86,7 @@ const chartData = ref<ChartData<'line'>>()
 const chartOptions = ref<ChartOptions<'line'>>({
   responsive: true,
   maintainAspectRatio: false,
+  
   plugins: {
     legend: { display: false },
     tooltip: { enabled: true },
@@ -101,7 +102,7 @@ const chartOptions = ref<ChartOptions<'line'>>({
     },
     y: {
       grid: { display: false },
-      ticks: { display: false } 
+      ticks: { display: true } 
     }
   }
 })
@@ -128,10 +129,10 @@ const showChart = ()=> {
   gradient.addColorStop(1, lightColor.value) // شفاف
 
   chartData.value = {
-    labels: hours,
+    labels: [...hours].reverse(),
     datasets: [
       {
-        data: priceState.chartPriceList.ps.map(price => price.sp),
+        data: [...priceState.chartPriceList.ps.map(price => price.sp)].reverse(),
         borderColor: chartLineBorder.value,
         borderWidth: 2,
         tension: 0.3,
